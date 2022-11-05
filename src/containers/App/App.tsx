@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { ConnectedProps } from 'react-redux';
 
-import withErrorHandler from 'hocs/withErrorHandler';
 import connector from './connector';
 import { CircularProgress, Header, Steps, StepsIndicator } from 'components';
-import { HotelDate, PreviewPayment, RoomView, Finish } from 'containers/Steps';
+import { HotelDate, PreviewPayment, Calendar, RoomView, Area, Time, Finish, ContactForm } from 'containers/Steps';
 import { useSteps } from 'hooks';
 
 import iconCalendar from 'lib/media/icons/calendar.svg';
@@ -29,40 +28,25 @@ const App: React.FC<TypeAppReduxProps> = (props: TypeAppReduxProps) => {
             return <HotelDate stepChangeHandler={stepChangeHandler} />;
         }
         if (stepsState.currentStep === 1) {
-            return <RoomView stepChangeHandler={stepChangeHandler} />;
+            return <Calendar stepChangeHandler={stepChangeHandler} />;
         }
         if (stepsState.currentStep === 2) {
-            return <PreviewPayment stepChangeHandler={stepChangeHandler} />;
+            return <Area stepChangeHandler={stepChangeHandler} />;
         }
-        if (stepsState.currentStep === 3) {
-            return <Finish stepChangeHandler={stepChangeHandler} />;
+		if (stepsState.currentStep === 3) {
+			return <Time stepChangeHandler={stepChangeHandler} />;
+		}
+        if (stepsState.currentStep === 4) {
+            return <ContactForm stepChangeHandler={stepChangeHandler} />;
         }
+		if (stepsState.currentStep === 5) {
+			return <Finish stepChangeHandler={stepChangeHandler} />
+		}
     };
 
     return (
         <>
-            <Header activeStep={stepsState.currentStep} stepChangeHandler={stepChangeHandler} />
             <main className={'container'}>
-                <Steps>
-                    <StepsIndicator
-                        imgUrl={iconCalendar}
-                        title="Hotel &amp; Date"
-                        index={0}
-                        stepChangeHandler={stepChangeHandler}
-                    />
-                    <StepsIndicator
-                        imgUrl={iconBed}
-                        title="Room type &amp; View"
-                        index={1}
-                        stepChangeHandler={stepChangeHandler}
-                    />
-                    <StepsIndicator
-                        imgUrl={iconCreditCard}
-                        title="Preview &amp; Payment"
-                        index={2}
-                        stepChangeHandler={stepChangeHandler}
-                    />
-                </Steps>
                 {status === 'pending' && <CircularProgress />}
                 {status === 'resolved' && renderStep()}
                 {status === 'rejected' && error && <h3 style={{ textAlign: 'center', color: 'red' }}>{error}</h3>}
@@ -71,4 +55,4 @@ const App: React.FC<TypeAppReduxProps> = (props: TypeAppReduxProps) => {
     );
 };
 
-export default withErrorHandler(connector(App));
+export default connector(App);

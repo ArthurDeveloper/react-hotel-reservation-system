@@ -8,7 +8,10 @@ type TypeButtonProps = {
     extraClasses?: string;
     inverse?: boolean;
     color?: 'primary' | 'danger' | 'success' | 'grey' | 'none';
-    type: 'submit' | 'button' | 'reset';
+	width?: string;
+    height?: string;
+	padding?: string;
+	type: 'submit' | 'button' | 'reset';
     onClick: () => void;
     disabled?: boolean;
     loading?: boolean;
@@ -17,6 +20,7 @@ type TypeButtonProps = {
 
 const Button: React.FC<TypeButtonProps> = (props: TypeButtonProps) => {
     const elClasses: [string] = [styleClasses.button];
+	const { width, height, padding } = props;
 
     if (props.extraClasses) {
         elClasses.push(props.extraClasses);
@@ -45,7 +49,7 @@ const Button: React.FC<TypeButtonProps> = (props: TypeButtonProps) => {
     }
 
     return (
-        <button className={elClasses.join(' ')} type={props.type} onClick={props.onClick} disabled={props.disabled}>
+        <button className={elClasses.join(' ')} type={props.type} onClick={props.onClick} disabled={props.disabled} style={{ width, height, padding }}>
             {typeof props.loading !== 'undefined' && (
                 <CircularProgress show={props.loading} extraClasses={styleClasses['button__spinner']} />
             )}

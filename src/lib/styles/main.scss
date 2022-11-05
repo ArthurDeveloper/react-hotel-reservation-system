@@ -33,6 +33,12 @@ body {
     color: $danger-color;
 }
 
+h2 {
+	color: #000;
+	font-weight: 500;
+	letter-spacing: 0.5px;
+}
+
 /* Change Autocomplete styles in Chrome
 *****************************************/
 input:-webkit-autofill,

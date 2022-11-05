@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-
 type TypeErrorHandlerProps = {};
 type TypeErrorHandlerState = {
     error: boolean;
 };
-const withErrorHandler = (WrappedComponent: React.ComponentType) => {
+
+const withErrorHandler = (WrappedComponent: JSX.Element) => {
     return class extends Component<TypeErrorHandlerProps, TypeErrorHandlerState> {
         constructor(props: {}) {
             super(props);
@@ -31,7 +31,7 @@ const withErrorHandler = (WrappedComponent: React.ComponentType) => {
                 );
             }
 
-            return <WrappedComponent {...this.props} />;
+            return WrappedComponent;
         }
     };
 };

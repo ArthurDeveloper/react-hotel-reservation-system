@@ -15,7 +15,7 @@ type TypeRoomOptions = {
 };
 
 const step: TypeStep = {
-    index: 1,
+    index: 2,
     isValid: false,
     inputs: {
         roomType: {

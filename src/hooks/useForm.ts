@@ -35,11 +35,6 @@ const formReducer = (state: TypeFormState, action: any) => {
                 [action.inputId]: newInput
             };
 
-            // Check isTouched
-            if (!state.inputs[action.inputId].isTouched) {
-                newInput.isTouched = true;
-            }
-
             return {
                 ...state,
                 inputs: newInputs,

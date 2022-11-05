@@ -1,0 +1,59 @@
+@import './abstracts/variables.scss';
+
+.react-calendar {
+	width: 50rem;
+	border: none !important;
+	
+	&__tile {
+		width: 4.37rem !important;
+		height: 4.37rem !important;
+		padding: 0;
+		border: 1px solid #ccc !important;
+		&:enabled:not(&:hover) {
+			color: #000 !important;
+		}
+
+		&:enabled:hover, &:enabled:focus {
+			background-color: $bg-dark-color;
+			color: #fff !important;
+		}
+
+		&:disabled {
+			visibility: hidden;
+		}
+
+		&--now {
+			background: none;
+		}
+	}
+
+	&__navigation button:disabled {
+		display: none;
+	}
+
+	&__navigation {
+		&__prev2-button {
+			display: none;
+		}
+
+		&__next2-button {
+			display: none;
+		}
+
+		&__label {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+		}
+
+		&__label__labelText {
+			text-align: left;
+			margin-left: 2rem;
+		}
+
+	}
+
+	&__month-view__days__day--neighboringMonth {
+		visibility: hidden;
+	}
+}

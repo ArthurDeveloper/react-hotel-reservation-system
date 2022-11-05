@@ -8,7 +8,7 @@ import { getCreditCardYears, getCreditCardMonths, isValidName, ccNumberMaskPipe 
 import formClasses from 'components/Form/Form.module.scss';
 import styleClasses from './PreviewPayment.module.scss';
 
-declare global {
+
     type TypeCardDetails = {
         [stepIndex: string]: {
             icon: string;
@@ -16,7 +16,7 @@ declare global {
             color: string;
         };
     };
-}
+
 
 const step: TypeStep = {
     index: 2,

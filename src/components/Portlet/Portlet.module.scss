@@ -2,6 +2,12 @@
 @import '../../lib/styles/abstracts/_mixins.scss';
 
 .portlet {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100% !important;
+	height: 100% !important;
     box-shadow: $portlet-shadow;
     border-radius: $border-radius;
     $inner-padding: 26px;

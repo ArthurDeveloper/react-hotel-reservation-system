@@ -13,14 +13,6 @@ const Finish: React.FC<TypeReservationStep> = (props: TypeReservationStep) => {
 
     const { stepChangeHandler } = props;
 
-    // Go to the first step after delete
-    useEffect(() => {
-        if (cart.newReservation.status === 'idle' && !cart.newReservation.data.id) {
-            stepChangeHandler(0, { isValid: false, inputs: {} }, 0);
-            clearStoredValues();
-        }
-    }, [cart.newReservation.data.id, cart.newReservation.status, stepChangeHandler]);
-
     return (
         <Portlet>
             <div className={styleClasses['finish']}>
