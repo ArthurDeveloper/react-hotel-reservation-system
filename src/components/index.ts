@@ -1,5 +1,4 @@
 export { default as Button } from './Button';
-export { default as CreditCard } from './CreditCard';
 export { ImageCheckbox, Select, TextField } from './Form';
 export { default as Header } from './Header';
 export { default as Portlet } from './Portlet';

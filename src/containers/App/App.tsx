@@ -3,7 +3,7 @@ import { ConnectedProps } from 'react-redux';
 
 import connector from './connector';
 import { CircularProgress, Header, Steps, StepsIndicator } from 'components';
-import { HotelDate, PreviewPayment, Calendar, RoomView, Area, Time, Finish, ContactForm } from 'containers/Steps';
+import { HotelDate, Calendar, Area, Time, Finish, ContactForm } from 'containers/Steps';
 import { useSteps } from 'hooks';
 
 import iconCalendar from 'lib/media/icons/calendar.svg';
