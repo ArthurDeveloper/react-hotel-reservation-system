@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import validatorjs from 'validator';
 
-import { useForm, useLocalStorage, useCart, useCreditCard } from 'hooks';
+import { useForm, useLocalStorage } from 'hooks';
 import { Portlet, Button, TextField } from 'components';
-import { getCreditCardYears, getCreditCardMonths, isValidName, ccNumberMaskPipe } from 'lib/scripts/utils';
 
 import formClasses from 'components/Form/Form.module.scss';
 
