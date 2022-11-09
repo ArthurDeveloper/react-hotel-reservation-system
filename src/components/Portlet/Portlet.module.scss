@@ -6,12 +6,10 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 100% !important;
-	height: 100% !important;
-    box-shadow: $portlet-shadow;
-    border-radius: $border-radius;
+//	width: 100% !important;
+//	height: 100% !important;
     $inner-padding: 26px;
-    background-color: #fff;
+    background-color: transparent;
     padding: calc(#{$inner-padding} * 1.1) $inner-padding;
 
     // Space between portlets

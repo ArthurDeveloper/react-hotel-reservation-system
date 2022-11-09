@@ -9,9 +9,11 @@ import styleClasses from './Finish.module.scss';
 import fireworks from 'lib/media/icons/fireworks.svg';
 
 const Finish: React.FC<TypeReservationStep> = (props: TypeReservationStep) => {
-    const { cart, dispatchDeleteReservation } = useCart();
-
     const { stepChangeHandler } = props;
+
+	useEffect(() => {
+		props.finish!();
+	}, []);
 
     return (
         <Portlet>
@@ -29,38 +31,25 @@ const Finish: React.FC<TypeReservationStep> = (props: TypeReservationStep) => {
                         <Button
                             type="button"
                             onClick={() => {
-                                stepChangeHandler(0, { isValid: false, inputs: {} }, 0);
+                                stepChangeHandler(0, { isValid: false, inputs: {} }, 0, {});
                                 clearStoredValues();
                             }}
                         >
                             Make a new reservation
                         </Button>
-                        <Button
-                            type="button"
-                            onClick={() => {
-                                stepChangeHandler(0, { isValid: true, inputs: {} }, 0);
-                            }}
-                        >
-                            Update reservation
-                        </Button>
-                        <Button
+                        {/*<Button
                             type="button"
                             onClick={() => {
                                 if (window.confirm('Are you sure you want to delete your reservation?')) {
                                     dispatchDeleteReservation();
                                 }
                             }}
-                            loading={cart.newReservation.status === 'pending'}
                         >
                             Cancel reservation
-                        </Button>
+                        </Button>*/}
                     </div>
                 </div>
 
-                <ReservationDetails
-                    type="boxes"
-                    show={['checkin', 'checkout', 'adults', 'children', 'room', 'view', 'totals']}
-                />
             </div>
         </Portlet>
     );

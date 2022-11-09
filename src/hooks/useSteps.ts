@@ -29,7 +29,19 @@ const initialState: TypeStepsState = {
         2: {
             isValid: false,
             status: 'uncompleted'
-        }
+        },
+		3: {
+			isValid: false,
+			status: 'uncompleted',
+		},
+		4: {
+			isValid: false,
+			status: 'uncompleted',
+		},
+		5: {
+			isValid: false,
+			status: 'uncompleted',
+		},
     },
     currentStep: 0
 };
@@ -52,10 +64,10 @@ const useReservation = (): {
 
     const stepChangeHandler = useCallback(
         (stepIndex: number, formState: TypeFormState, targetStep: number) => {
-            const isReset = !formState.isValid && !Object.keys(formState.inputs).length;
+           // const isReset = !formState.isValid && !Object.keys(formState.inputs).length;
             let newState = initialState;
 
-            if (!isReset) {
+          //  if (!isReset) {
                 newState = {
                     steps: {
                         ...stepsState.steps,
@@ -66,7 +78,7 @@ const useReservation = (): {
                     },
                     currentStep: targetStep
                 };
-            }
+            //}
 
             updateStepsState(newState);
 

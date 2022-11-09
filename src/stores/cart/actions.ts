@@ -121,6 +121,8 @@ export const newReservation = (
         card_cvv: inputs.cardCvv.value
     };
 
+	
+
     return {
         type: NEW_RESERVATION,
         data

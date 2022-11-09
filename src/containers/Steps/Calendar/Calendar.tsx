@@ -36,13 +36,10 @@ const Calendar: React.FC<TypeReservationStep> = (props: TypeReservationStep) => 
 				<ReactCalendar onChange={(date: Date) => {
 					console.log(date);
 					inputHandler('calendar', date.toString(), true);
-					console.log('monke');
 
-					props.stepChangeHandler(step.index, formState, step.index + 1);
+					props.stepChangeHandler(step.index, formState, 2, { date: date.toString() });
 					setLocalStorageValue({
-						...step,
-						isValid: formState.isValid,
-						inputs: { ...formState.inputs }
+						date
 					});
 				}} minDate={new Date()} />
 			</form>

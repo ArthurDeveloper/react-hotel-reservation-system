@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import validatorjs from 'validator';
 
-import { useForm, useLocalStorage } from 'hooks';
-import { Portlet, Button, TextField } from 'components';
+import { useForm, useLocalStorage, useCart } from 'hooks';
+import { Portlet, Button, TextField } from 'components'; 
 
 import formClasses from 'components/Form/Form.module.scss';
 
@@ -41,9 +41,18 @@ const step: TypeStep = {
 const ContactForm: React.FC<TypeReservationStep> = (props: TypeReservationStep) => {
     const [storedValue, setLocalStorageValue] = useLocalStorage(`step-${step.index}`, step);
     const [formState, inputHandler] = useForm(storedValue.inputs, storedValue.isValid);
+	const [data, setData] = useState({});
+	
+	const [firstName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
+	const [phoneNumber, setPhoneNumber] = useState('');
+	const [emailAdress, setEmailAdress] = useState('');
+	const [company, setCompany] = useState(''); 
+
 
     return (
         <Portlet>
+			<h2>Contact information</h2>
             <form onSubmit={(e) => e.preventDefault()}>
                 <div>
 					<div className={formClasses['form__wide-row']} style={{ 
@@ -60,6 +69,7 @@ const ContactForm: React.FC<TypeReservationStep> = (props: TypeReservationStep) 
 									value={formState.inputs.firstName.value}
 									onChange={(id, value, validity) => {
 										inputHandler(id, value, true);
+										setFirstName(value);
 									}}
 								/>
 								
@@ -71,6 +81,7 @@ const ContactForm: React.FC<TypeReservationStep> = (props: TypeReservationStep) 
 									value={formState.inputs.lastName.value}
 									onChange={(id, value, validity) => {
 										inputHandler(id, value, true);
+										setLastName(value);
 									}}
 								/>
 							</div>
@@ -85,6 +96,7 @@ const ContactForm: React.FC<TypeReservationStep> = (props: TypeReservationStep) 
 								validationMessage="Please enter a valid phone number"
 								onChange={(id, value, validity) => {
 									inputHandler(id, value, validity);
+									if (validity) setPhoneNumber(value);
 								}}
 							/>
 
@@ -97,7 +109,10 @@ const ContactForm: React.FC<TypeReservationStep> = (props: TypeReservationStep) 
 								validity={formState.inputs.emailAdress.isValid}
 								validators={[[validatorjs.isEmail]]}
 								validationMessage="Please type a valid email adress"
-								onChange={inputHandler}
+								onChange={(id, value, validity) => {
+									inputHandler(id, value, validity);
+									if (validity) setEmailAdress(value);
+								}}
 							/>
 
 							<TextField
@@ -108,6 +123,7 @@ const ContactForm: React.FC<TypeReservationStep> = (props: TypeReservationStep) 
 								value={formState.inputs.company.value}
 								onChange={(id, value, validity) => {
 									inputHandler(id, value, true);
+									setCompany(value);
 								}}
 							/>
                         </div>
@@ -116,8 +132,9 @@ const ContactForm: React.FC<TypeReservationStep> = (props: TypeReservationStep) 
                         type="button"
                         onClick={() => {
                             if (!formState.isValid) return;
-							props.stepChangeHandler(step.index, formState, step.index + 1);
-                        }}
+
+							props.stepChangeHandler(step.index, formState, step.index + 1, { firstName, lastName, phoneNumber, emailAdress, company });
+						}}
                         disabled={!formState.isValid}
 						width="9rem"
 						height="2rem"

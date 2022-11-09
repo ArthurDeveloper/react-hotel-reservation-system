@@ -27,7 +27,7 @@ const useCart = () => {
 
     const dispatchNewReservation = useCallback(
         (inputs: TypeInputs) => {
-            dispatch(newReservation(cart, hotelsDetails, inputs));
+        	dispatch(newReservation(cart, hotelsDetails, inputs));
         },
         [dispatch, cart, hotelsDetails]
     );

@@ -119,7 +119,7 @@ const RoomView: React.FC<TypeReservationStep> = (props: TypeReservationStep) => 
                         type="button"
                         color="none"
                         onClick={() => {
-                            props.stepChangeHandler(step.index, formState, step.index - 1);
+                            props.stepChangeHandler(step.index, formState, step.index - 1, { area: 'Villani Trattoria' });
                         }}
                     >
                         Back
@@ -128,7 +128,7 @@ const RoomView: React.FC<TypeReservationStep> = (props: TypeReservationStep) => 
                         type="button"
                         onClick={() => {
                             if (!formState.isValid) return;
-                            props.stepChangeHandler(step.index, formState, step.index + 1);
+                            props.stepChangeHandler(step.index, formState, step.index + 1, { area: 'Villani Osteria' });
                             setLocalStorageValue({
                                 ...step,
                                 isValid: formState.isValid,

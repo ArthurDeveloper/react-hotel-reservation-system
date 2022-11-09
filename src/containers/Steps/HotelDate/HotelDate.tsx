@@ -15,12 +15,12 @@ afterTwoDays = afterTwoDays.toString();
 
 const step: TypeStep = {
     index: 0,
-    isValid: false,
+    isValid: true,
     inputs: {
         guests: {
             value: '0',
             isTouched: false,
-            isValid: false
+            isValid: true
         }
     }
 };
@@ -32,21 +32,22 @@ const HotelDate: React.FC<TypeReservationStep> = (props: TypeReservationStep) =>
     return (
         <Portlet>
 			<h2>Select number of guests</h2>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={(e) => {console.log('ghay'); e.preventDefault()}}>
                 <div className={formClasses['form__wide-row']}>
                                    </div>
-                <div className={formClasses['form__wide-row-center']}>
+                <div className={formClasses['form__wide-row-center']} style={{
+					display: 'grid',
+					gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+				}}>
 					{new Array(10).fill(0).map((value, index) => index+1).map((value) => {
                     	return (
 							<Button
-                        		type="submit"
+                        		type="button"
 								onClick={() => {
 									inputHandler('guests', value, true);
-									props.stepChangeHandler(step.index, formState, step.index + 1);
+									props.stepChangeHandler(step.index, formState, step.index + 1, { guests: value });
 									setLocalStorageValue({
-										...step,
-										isValid: true,
-										inputs: { ...formState.inputs }
+										guests: value
 									});
 								}}
 								color="primary"

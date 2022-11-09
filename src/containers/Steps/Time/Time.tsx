@@ -42,7 +42,7 @@ const Time: React.FC<TypeReservationStep> = (props: TypeReservationStep) => {
 
     return (
         <Portlet>
-			<h2>Select number of guests</h2>
+			<h2>Choose time</h2>
             <form onSubmit={(e) => e.preventDefault()}>
                 <div className={formClasses['form__wide-row']}>
                                    </div>
@@ -58,11 +58,9 @@ const Time: React.FC<TypeReservationStep> = (props: TypeReservationStep) => {
 									type="submit"
 									onClick={() => {
 										inputHandler('time', time, true);
-										props.stepChangeHandler(step.index, formState, step.index + 1);
+										props.stepChangeHandler(step.index, formState, step.index + 1, { time });
 										setLocalStorageValue({
-											...step,
-											isValid: true,
-											inputs: { ...formState.inputs }
+											time
 										});
 									}}
 									color="primary"

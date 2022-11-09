@@ -1,4 +1,4 @@
-import { logger, getStoredValue, getTwoDatesDiff } from 'lib/scripts/utils';
+/*import { logger, getStoredValue, getTwoDatesDiff } from 'lib/scripts/utils';
 import {
     UPDATE_CART,
     CHECK_COUPON,
@@ -164,4 +164,6 @@ const cartReducer = (state: TypeCartInitialState = getCartInitialState(), action
     }
 };
 
-export default cartReducer;
+export default cartReducer;*/
+
+export {};

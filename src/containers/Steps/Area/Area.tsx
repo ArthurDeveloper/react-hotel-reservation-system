@@ -28,11 +28,9 @@ const Area: React.FC<TypeReservationStep> = (props: TypeReservationStep) => {
     
 	const handleSubmit = (areaName: string) => {
 		inputHandler('area', areaName, true);
-		props.stepChangeHandler(step.index, formState, step.index + 1);
+		props.stepChangeHandler(step.index, formState, step.index + 1, { area: areaName });
 		setLocalStorageValue({
-			...step,
-			isValid: formState.isValid,
-			inputs: { ...formState.inputs }
+			area: areaName
 		});
 	}
 
@@ -43,21 +41,22 @@ const Area: React.FC<TypeReservationStep> = (props: TypeReservationStep) => {
 			<form onSubmit={(e) => e.preventDefault()} style={{ 
 				display: 'flex',
 				justifyContent: 'center',
+				flexWrap: 'wrap',
 				gap: '0.5em',
 				width: '100%' }}
 			>
 				<Button 
 					type="submit"
-					width="80%"
-					height="10rem"
+					width="20rem"
+					height="7rem"
 					onClick={() => handleSubmit('Villani Trattoria')}>
 					<h2>Villani Trattoria</h2>
 				</Button>
 				
 				<Button 
 					type="submit"
-					width="80%"
-					height="10rem"
+					width="20rem"
+					height="7rem"
 					onClick={() => handleSubmit('Villani Osteria')}>
 					<h2>Villani Osteria</h2>
 				</Button>
