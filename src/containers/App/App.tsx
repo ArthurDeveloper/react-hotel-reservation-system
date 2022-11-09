@@ -49,7 +49,7 @@ const App: React.FC<TypeAppReduxProps> = (props: TypeAppReduxProps) => {
 					guests: values[0].guests,
 					date: values[1].date,
 					area: values[2].area,
-					time: values[3].area,
+					time: values[3].time,
 				});
 			} catch (Exception) {
 
@@ -86,8 +86,10 @@ const App: React.FC<TypeAppReduxProps> = (props: TypeAppReduxProps) => {
 	const recap: () => JSX.Element = () => {
 		return (
 			<div className={appClasses['recap']} style={{ 
-				width: stepsState.currentStep === 4 ? '70%' : 'none',
-				display: stepsState.currentStep === 5 ? 'none' : 'flex' }}>
+				maxWidth: stepsState.currentStep === 4 ? '30rem' : 'none',
+				display: stepsState.currentStep === 5 ? 'none' : 'block',
+				marginTop: stepsState.currentStep === 4 ? '0' : '2rem'
+			}}>
 				<div 
 					className={appClasses['recap-data']}
 					onClick={() => {
@@ -168,8 +170,8 @@ const App: React.FC<TypeAppReduxProps> = (props: TypeAppReduxProps) => {
         <>
             <main className={'container'}>
                 {status === 'pending' && <CircularProgress />}
-                {status === 'resolved' && (<div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem' , justifyContent: 'center', alignItems: 'center' }}>
-					{recap()}<br/>
+                {status === 'resolved' && (<div style={{ display: 'flex', flexDirection: stepsState.currentStep === 4 ? 'row' : 'column', flexWrap: 'wrap', gap: '2rem' , justifyContent: 'center', alignItems: 'center' }}>
+					{recap()}
 					{renderStep()}
         		</div>)}
                 {status === 'rejected' && error && <h3 style={{ textAlign: 'center', color: 'red' }}>{error}</h3>}

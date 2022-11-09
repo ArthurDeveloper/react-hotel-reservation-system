@@ -12,6 +12,7 @@ const Finish: React.FC<TypeReservationStep> = (props: TypeReservationStep) => {
     const { stepChangeHandler } = props;
 
 	useEffect(() => {
+		localStorage.clear();
 		props.finish!();
 	}, []);
 
